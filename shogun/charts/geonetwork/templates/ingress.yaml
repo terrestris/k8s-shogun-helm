@@ -1,11 +1,14 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "geoserver.fullname" . -}}
+{{- $fullName := include "geonetwork.fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-{{ include "geoserver.labels" . | indent 4 }}
+    app.kubernetes.io/name: {{ include "geonetwork.name" . }}
+    helm.sh/chart: {{ include "geonetwork.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

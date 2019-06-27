@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgress.password }}
+              value: {{ .Values.postgres.password }}
           ports:
             - name: tcp
               containerPort: 5432
