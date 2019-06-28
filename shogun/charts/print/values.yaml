@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: docker.terrestris.de/k8s-shogun-helm/print
-  tag: latest
+  tag: 3.20.0
   pullPolicy: Always
 
 nameOverride: ""
