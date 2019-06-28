@@ -14,3 +14,5 @@
 `kubectl exec -it postgis-85dfb4f76b-9dj69 -- psql -Upostgres -c "CREATE DATABASE shogun2webapp WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'de_DE.UTF-8' LC_CTYPE = 'de_DE.UTF-8';"`
 
 `kubectl exec -it postgis-85dfb4f76b-9dj69 -- psql -Upostgres shogun2webapp -c "CREATE SCHEMA shogun;"`
+
+`kubectl exec -it shogun-5479fd89ff-ptm72 -- touch /usr/local/tomcat/webapps/shogun2-webapp/WEB-INF/web.xml`
