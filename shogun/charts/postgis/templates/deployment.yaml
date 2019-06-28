@@ -29,6 +29,8 @@ spec:
           env:
             - name: POSTGRES_PASSWORD
               value: {{ .Values.postgres.password }}
+            - name: POSTGRES_DB
+              value: {{ .Values.postgres.dbname }}
           ports:
             - name: tcp
               containerPort: 5432
@@ -46,10 +48,20 @@ spec:
           volumeMounts:
             - mountPath: "/var/lib/postgresql"
               name: postgis-volume
+            - name: init-postgres
+              mountPath: /docker-entrypoint-initdb.d
+
       volumes:
         - name: postgis-volume
           persistentVolumeClaim:
             claimName: {{ include "postgis.fullname" . }}
+        - name: init-postgres
+          configMap:
+            name: init-postgres-cm
+            items:
+            - key: init-sql
+              path: init.sql
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

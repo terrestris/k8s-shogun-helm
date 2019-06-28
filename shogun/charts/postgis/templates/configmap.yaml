@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ include "postgis.name" . }}
+  name: init-postgres-cm
+data:
+  init-sql: |-
+    \c shogun2webapp
+    CREATE SCHEMA shogun;

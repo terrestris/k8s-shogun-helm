@@ -37,6 +37,7 @@ affinity: {}
 
 postgres:
   password: mysecretpassword
+  dbname: shogun2webapp
 
 pvc:
   size: 10Gi
